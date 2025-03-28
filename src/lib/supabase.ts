@@ -4,6 +4,14 @@ import type { Database } from './database.types';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('Supabase environment variables are not set:', {
+    url: supabaseUrl ? 'set' : 'missing',
+    key: supabaseAnonKey ? 'set' : 'missing'
+  });
+  throw new Error('Supabase configuration is incomplete. Please connect to Supabase using the "Connect to Supabase" button in the top right corner.');
+}
+
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
 
 export const signIn = async (email: string, password: string) => {
@@ -21,12 +29,17 @@ export const signOut = async () => {
   if (error) throw error;
 };
 
-export const getProjects = async () => {
-  const { data, error } = await supabase
+export const getProjects = async (category?: string) => {
+  let query = supabase
     .from('projects')
     .select('*')
     .order('created_at', { ascending: false });
-  
+
+  if (category) {
+    query = query.eq('category', category);
+  }
+
+  const { data, error } = await query;
   if (error) throw error;
   return data;
 };
@@ -77,10 +90,33 @@ export const submitContactForm = async (message: {
 }) => {
   const { data, error } = await supabase
     .from('contact_messages')
-    .insert([message])
+    .insert([{
+      ...message,
+      status: 'new'
+    }])
     .select()
     .single();
   
   if (error) throw error;
+
+  // Send email notification
+  const { error: emailError } = await supabase.functions.invoke('send-contact-notification', {
+    body: {
+      to: 'fnahnas@gmail.com',
+      subject: `New Project Request: ${message.project_type}`,
+      message: `
+        Name: ${message.name}
+        Email: ${message.email}
+        Phone: ${message.phone || 'Not provided'}
+        Project Type: ${message.project_type}
+        Message: ${message.message}
+      `
+    }
+  });
+
+  if (emailError) {
+    console.error('Failed to send email notification:', emailError);
+  }
+
   return data;
 };

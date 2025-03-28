@@ -4,37 +4,56 @@
 
 @layer base {
   :root {
-    --primary: #2563eb;
-    --secondary: #1e40af;
+    --primary: #FF6B6B;
+    --secondary: #4ECDC4;
+    --accent: #45B7D1;
+    --dark: #2C3E50;
+    --light: #F7F9FC;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-light text-dark;
   }
 }
 
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1;
   }
   
   .btn-primary {
-    @apply bg-primary text-white hover:bg-secondary;
+    @apply bg-primary text-white hover:bg-opacity-90 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-opacity-90 shadow-lg hover:shadow-xl;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300;
+    @apply bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-shadow duration-300;
   }
 
   .input {
-    @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none;
+    @apply w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all duration-200;
+  }
+
+  .service-card {
+    @apply card hover:scale-105 transition-transform duration-300 cursor-pointer;
+  }
+
+  .project-card-base {
+    @apply card overflow-hidden cursor-pointer bg-dark border border-gray-800;
+  }
+
+  .project-image {
+    @apply w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110;
   }
 }
 
-.hover-scale {
-  @apply transition-transform duration-300 hover:scale-105;
+.section-padding {
+  @apply py-20 md:py-32;
 }
 
-.section-padding {
-  @apply py-16 md:py-24;
+.gradient-text {
+  @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
 }
