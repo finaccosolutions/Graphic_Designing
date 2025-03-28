@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock } from 'lucide-react';
-import { signIn } from '../lib/supabase';
+import { signIn } from '../lib/storage';
 import toast from 'react-hot-toast';
 
 const Login = () => {
