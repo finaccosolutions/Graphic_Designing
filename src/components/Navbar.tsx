@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Palette, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,47 +10,55 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-dark/95 text-white sticky top-0 z-50 backdrop-blur-sm">
+    <nav className="fixed w-full top-0 z-50 bg-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <Palette className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold gradient-text">DesignNest</span>
+          <motion.div 
+            className="flex items-center"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link to="/" className="flex items-center space-x-2 hover-lift">
+              <Palette className="h-8 w-8 text-primary animate-float" />
+              <span className="text-2xl font-bold text-white">DesignNest</span>
             </Link>
-          </div>
+          </motion.div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
-              className={`text-lg hover:text-primary transition-colors ${
-                isActive('/') ? 'text-primary' : 'text-gray-300'
-              }`}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex items-center space-x-8"
             >
-              Home
-            </Link>
-            <Link
-              to="/portfolio"
-              className={`text-lg hover:text-primary transition-colors ${
-                isActive('/portfolio') ? 'text-primary' : 'text-gray-300'
-              }`}
-            >
-              Portfolio
-            </Link>
-            <Link
-              to="/contact"
-              className="btn btn-primary"
-            >
-              Start a Project
-            </Link>
+              <Link
+                to="/"
+                className={`text-lg ${isActive('/') ? 'text-primary' : 'text-white hover:text-primary'} transition-colors`}
+              >
+                Home
+              </Link>
+              <Link
+                to="/portfolio"
+                className={`text-lg ${isActive('/portfolio') ? 'text-primary' : 'text-white hover:text-primary'} transition-colors`}
+              >
+                Portfolio
+              </Link>
+              <Link
+                to="/contact"
+                className="btn btn-primary hover-glow shine-effect"
+              >
+                Start a Project
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white"
+              className="text-white hover:text-primary transition-colors"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
@@ -61,37 +70,45 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link
-                to="/"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive('/') ? 'text-primary' : 'text-gray-300 hover:text-primary'
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                to="/portfolio"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive('/portfolio') ? 'text-primary' : 'text-gray-300 hover:text-primary'
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                Portfolio
-              </Link>
-              <Link
-                to="/contact"
-                className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:text-primary-dark"
-                onClick={() => setIsOpen(false)}
-              >
-                Start a Project
-              </Link>
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden overflow-hidden bg-dark/95 backdrop-blur-sm rounded-2xl mt-2"
+            >
+              <div className="px-4 py-4 space-y-3">
+                <Link
+                  to="/"
+                  className={`block px-4 py-2 rounded-xl transition-all duration-300 ${
+                    isActive('/') ? 'bg-primary/20 text-primary' : 'text-white hover:bg-primary/10 hover:text-primary'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/portfolio"
+                  className={`block px-4 py-2 rounded-xl transition-all duration-300 ${
+                    isActive('/portfolio') ? 'bg-primary/20 text-primary' : 'text-white hover:bg-primary/10 hover:text-primary'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Portfolio
+                </Link>
+                <Link
+                  to="/contact"
+                  className="block px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-secondary text-white"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Start a Project
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
