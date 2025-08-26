@@ -21,7 +21,7 @@ const Navbar = () => {
           >
             <Link to="/" className="flex items-center space-x-2 hover-lift">
               <Palette className="h-8 w-8 text-primary animate-float" />
-              <span className="text-2xl font-bold text-white">DesignNest</span>
+              <span className="text-2xl font-bold text-white">Naqaad</span>
             </Link>
           </motion.div>
           

@@ -35,48 +35,48 @@ const services = [
     icon: <PenTool className="w-8 h-8" />,
     title: 'Logo Design',
     description: 'Unique and memorable logos that represent your brand identity',
-    link: '/portfolio/logo',
-    image: 'https://images.pexels.com/photos/6444/pencil-typography-black-design.jpg?auto=compress&cs=tinysrgb&w=1600',
+    link: '/services/logo-design',
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800',
     color: 'from-rose-500 to-orange-500',
   },
   {
     icon: <Layout className="w-8 h-8" />,
     title: 'Poster Design',
     description: 'Eye-catching posters that grab attention and deliver your message',
-    link: '/portfolio/poster',
-    image: 'https://images.pexels.com/photos/5626027/pexels-photo-5626027.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    link: '/services/poster-design',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
     color: 'from-violet-500 to-purple-500',
   },
   {
     icon: <Type className="w-8 h-8" />,
     title: 'Arabic Calligraphy',
     description: 'Beautiful handwritten Arabic calligraphy for your special projects',
-    link: '/portfolio/calligraphy',
-    image: 'https://images.pexels.com/photos/5626103/pexels-photo-5626103.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    link: '/services/arabic-calligraphy',
+    image: 'https://images.unsplash.com/photo-1579187707643-35646d22b596?auto=format&fit=crop&q=80&w=800',
     color: 'from-blue-500 to-cyan-500',
   },
   {
     icon: <Image className="w-8 h-8" />,
     title: 'Mockups',
     description: 'Professional mockups that bring your designs to life',
-    link: '/portfolio/mockup',
-    image: 'https://images.pexels.com/photos/5626080/pexels-photo-5626080.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    link: '/services/mockups',
+    image: 'https://images.unsplash.com/photo-1636955779321-819753cd1741?auto=format&fit=crop&q=80&w=800',
     color: 'from-emerald-500 to-teal-500',
   },
   {
     icon: <Layers className="w-8 h-8" />,
     title: 'Branding',
     description: 'Complete branding solutions to establish your unique identity',
-    link: '/portfolio/branding',
-    image: 'https://images.pexels.com/photos/5626138/pexels-photo-5626138.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    link: '/services/branding',
+    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=800',
     color: 'from-amber-500 to-yellow-500',
   },
   {
     icon: <CreditCard className="w-8 h-8" />,
     title: 'Business Cards',
     description: 'Professional business card designs that make lasting impressions',
-    link: '/portfolio/business-cards',
-    image: 'https://images.pexels.com/photos/5626147/pexels-photo-5626147.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    link: '/services/business-cards',
+    image: 'https://images.unsplash.com/photo-1629832207531-2b1bcd339b0b?auto=format&fit=crop&q=80&w=800',
     color: 'from-pink-500 to-rose-500',
   },
 ];
@@ -88,6 +88,11 @@ const Home = () => {
       <section className="min-h-screen relative overflow-hidden bg-white">
         <div className="hero-pattern absolute inset-0 opacity-5" />
         <FloatingBubbles />
+        
+        {/* Additional animated shapes */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-secondary/10 to-accent/10 rounded-full blur-xl animate-bounce" style={{ animationDuration: '3s' }} />
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-lg animate-ping" style={{ animationDuration: '4s' }} />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen pt-20">
@@ -158,6 +163,12 @@ const Home = () => {
       {/* Services Section */}
       <section className="section-padding bg-gradient-to-b from-white to-gray-50 relative">
         <div className="absolute inset-0 hero-pattern opacity-5" />
+        
+        {/* Floating geometric shapes */}
+        <div className="absolute top-10 right-20 w-16 h-16 border-2 border-primary/20 rounded-lg rotate-45 animate-spin" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-20 left-20 w-20 h-20 border-2 border-secondary/20 rounded-full animate-pulse" />
+        <div className="absolute top-1/2 right-10 w-12 h-12 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -169,7 +180,7 @@ const Home = () => {
             <div className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary mb-6">
               Our Services
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
               Design Solutions for{' '}
               <span className="gradient-text">Every Need</span>
             </h2>
@@ -186,26 +197,30 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+                  className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-3 hover:scale-105"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125 group-hover:rotate-2"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                   <div className="p-6">
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 bg-gradient-to-br ${service.color}`}>
                       <div className="text-white">{service.icon}</div>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                    <p className="text-gray-600">{service.description}</p>
-                    <div className="mt-4 flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
+                    <p className="text-gray-600 group-hover:text-gray-800 transition-colors">{service.description}</p>
+                    <div className="mt-4 flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform duration-300">
                       Learn More
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
                   </div>
+                  
+                  {/* Hover overlay effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </motion.div>
               </Link>
             ))}
