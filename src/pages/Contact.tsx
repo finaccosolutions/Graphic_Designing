@@ -65,7 +65,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-gray-600">fnahnas@gmail.com</p>
+                    <p className="text-gray-600">officialnaqaad@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -92,12 +92,12 @@ const Contact = () => {
             <div className="card">
               <h2 className="text-2xl font-semibold mb-6">Our Services</h2>
               <ul className="space-y-3 text-gray-600">
-                <li>✓ Logo Design</li>
-                <li>✓ Poster Making</li>
-                <li>✓ Visiting Card Design</li>
-                <li>✓ Branding Solutions</li>
-                <li>✓ Professional Mockups</li>
+                <li>✓ Digital Marketing</li>
+                <li>✓ Graphic Designing</li>
                 <li>✓ Arabic Calligraphy</li>
+                <li>✓ Logo & Brand Design</li>
+                <li>✓ Print Design Solutions</li>
+                <li>✓ Social Media Marketing</li>
               </ul>
             </div>
           </motion.div>
@@ -170,10 +170,8 @@ const Contact = () => {
                 >
                   <option value="">Select a project type</option>
                   <option value="logo">Logo Design</option>
-                  <option value="poster">Poster Design</option>
-                  <option value="visitingCard">Visiting Card</option>
-                  <option value="branding">Branding</option>
-                  <option value="mockup">Mockup</option>
+                  <option value="digitalMarketing">Digital Marketing</option>
+                  <option value="graphicDesigning">Graphic Designing</option>
                   <option value="calligraphy">Arabic Calligraphy</option>
                   <option value="other">Other</option>
                 </select>

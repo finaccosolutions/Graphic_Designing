@@ -32,20 +32,12 @@ const FloatingBubbles = () => {
 
 const services = [
   {
-    icon: <PenTool className="w-8 h-8" />,
-    title: 'Logo Design',
-    description: 'Unique and memorable logos that represent your brand identity',
-    link: '/services/logo-design',
-    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800',
-    color: 'from-rose-500 to-orange-500',
-  },
-  {
     icon: <Layout className="w-8 h-8" />,
-    title: 'Poster Design',
-    description: 'Eye-catching posters that grab attention and deliver your message',
-    link: '/services/poster-design',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800',
-    color: 'from-violet-500 to-purple-500',
+    title: 'Digital Marketing',
+    description: 'Comprehensive digital marketing solutions to grow your online presence',
+    link: '/services/digital-marketing',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+    color: 'from-blue-500 to-indigo-500',
   },
   {
     icon: <Type className="w-8 h-8" />,
@@ -56,28 +48,12 @@ const services = [
     color: 'from-blue-500 to-cyan-500',
   },
   {
-    icon: <Image className="w-8 h-8" />,
-    title: 'Mockups',
-    description: 'Professional mockups that bring your designs to life',
-    link: '/services/mockups',
-    image: 'https://images.unsplash.com/photo-1636955779321-819753cd1741?auto=format&fit=crop&q=80&w=800',
-    color: 'from-emerald-500 to-teal-500',
-  },
-  {
-    icon: <Layers className="w-8 h-8" />,
-    title: 'Branding',
-    description: 'Complete branding solutions to establish your unique identity',
-    link: '/services/branding',
-    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=800',
-    color: 'from-amber-500 to-yellow-500',
-  },
-  {
-    icon: <CreditCard className="w-8 h-8" />,
-    title: 'Business Cards',
-    description: 'Professional business card designs that make lasting impressions',
-    link: '/services/business-cards',
-    image: 'https://images.unsplash.com/photo-1629832207531-2b1bcd339b0b?auto=format&fit=crop&q=80&w=800',
-    color: 'from-pink-500 to-rose-500',
+    icon: <PenTool className="w-8 h-8" />,
+    title: 'Graphic Designing',
+    description: 'Creative graphic design solutions for all your visual communication needs',
+    link: '/services/graphic-designing',
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800',
+    color: 'from-purple-500 to-pink-500',
   },
 ];
 
@@ -197,15 +173,15 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-3 hover:scale-105"
+                  className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-3"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125 group-hover:rotate-2"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                   <div className="p-6">
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 bg-gradient-to-br ${service.color}`}>
@@ -218,9 +194,6 @@ const Home = () => {
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
                   </div>
-                  
-                  {/* Hover overlay effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </motion.div>
               </Link>
             ))}

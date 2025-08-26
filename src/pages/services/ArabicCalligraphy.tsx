@@ -275,11 +275,17 @@ const ArabicCalligraphy = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-white text-blue-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl group"
+              className="inline-flex items-center gap-2 bg-white text-blue-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl group mr-4"
             >
               Start Your Calligraphy Project
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
+            <a
+              href="tel:+1234567890"
+              className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-500 transition-all duration-300 transform hover:-translate-y-1"
+            >
+              Call for Quote: +91 85 90000 761
+            </a>
           </motion.div>
         </div>
       </section>
